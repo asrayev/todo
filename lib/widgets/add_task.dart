@@ -1,7 +1,9 @@
+import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../model/local_database.dart';
 import '../model/todo_model.dart';
-
+import '../utils/myicons.dart';
 
 class AddTaskWidget extends StatefulWidget {
   VoidCallback onNewTask;
@@ -16,6 +18,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
   final formKey = GlobalKey<FormState>();
   String newTitle = "";
   String newDescription = "";
+  String Data = "";
 
   @override
   Widget build(BuildContext context) {
@@ -56,13 +59,44 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
               ),
             ),
             SizedBox(height: 12),
+            Row(
+              children: [
+                SizedBox(width: 10,),
+                InkWell(
+                  child: SvgPicture.asset(Myicons.clock),
+                  onTap: (() async {
+                    var results = await showCalendarDatePicker2Dialog(
+
+                      context: context,
+                      config: CalendarDatePicker2WithActionButtonsConfig(),
+                      dialogSize: const Size(325, 400),
+                      initialValue: [],
+                      borderRadius: BorderRadius.circular(15),
+                    );
+                    Data = results.toString();
+                  }),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                SvgPicture.asset(Myicons.secondi),
+                SizedBox(
+                  width: 10,
+                ),
+                SvgPicture.asset(Myicons.flag),
+                SizedBox(
+                  width: 250,
+                ),
+                SvgPicture.asset(Myicons.send),
+              ],
+            ),
             ElevatedButton(
                 onPressed: () {
                   formKey.currentState?.save();
                   var newTodo = TodoModel(
                     title: newTitle,
                     description: newDescription,
-                    date: "date",
+                    date: Data,
                     priority: "priority",
                     isCompleted: 0,
                   );

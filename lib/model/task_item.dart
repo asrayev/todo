@@ -16,30 +16,50 @@ class TaskItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFF363636),
+        borderRadius: BorderRadius.circular(10)
+      ),
       padding: EdgeInsets.all(12),
       margin: EdgeInsets.all(12),
-      color: Color(0xFF363636),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+          Row(
             children: [
-              Text(
-                model?.id.toString() ?? "-1",
-                style: TextStyle(color: Colors.white),
+              Icon(Icons.circle_outlined, color: Colors.white,),
+              SizedBox(width: 10,),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  // Text(
+                  //   model?.id.toString() ?? "-1",
+                  //   style: TextStyle(color: Colors.white),
+                  // ),
+                  // SizedBox(height: 8),
+                  Text(
+                    model?.title.toString() ?? "No title",
+                    style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    model?.description.toString() ?? "No desc",
+                    style: TextStyle(color: Colors.grey,),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    model?.date.toString() ?? "No desc",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
               ),
-              SizedBox(height: 8),
-              Text(
-                model?.title.toString() ?? "No title",
-                style: TextStyle(color: Colors.white),
-              ),
-              SizedBox(height: 8),
-              Text(
-                model?.description.toString() ?? "No desc",
-                style: TextStyle(color: Colors.white),
-              ),
+              Container(
+                decoration: BoxDecoration(
+                color: Colors.red,
+                  borderRadius: BorderRadius.circular(10)
+                ),
+              )
             ],
           ),
           IconButton(

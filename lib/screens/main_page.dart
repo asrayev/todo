@@ -219,31 +219,7 @@ class _MainPageState extends State<MainPage> {
 // ),
 // ),
 // SizedBox(height: 50,),
-// Row(
-// children: [
-// InkWell(
-//
-// child: SvgPicture.asset(Myicons.clock),
-// onTap: (() async {
-// var results = await showCalendarDatePicker2Dialog(
-// context: context,
-// config: CalendarDatePicker2WithActionButtonsConfig(),
-// dialogSize: const Size(325, 400),
-// initialValue: [],
-// borderRadius: BorderRadius.circular(15),
-// );
-// }),
-// ),
-// SizedBox(width: 10,),
-// SvgPicture.asset(Myicons.secondi),
-// SizedBox(width: 10,),
-// SvgPicture.asset(Myicons.flag),
-// SizedBox(width: 250,),
-// SvgPicture.asset(Myicons.send),
-//
-//
-// ],
-// )
+// 3
 // ],
 // ),
 // );
