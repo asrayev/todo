@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo/model/todo_model.dart';l
+import 'package:todo/model/todo_model.dart';
 import 'local_database.dart';
+
 
 class TaskItem extends StatelessWidget {
   TodoModel? model;
