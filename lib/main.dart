@@ -21,7 +21,10 @@ class Myapp extends StatelessWidget {
       builder: (BuildContext contex, Widget? child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-
+            themeMode: ThemeMode.dark,
+          darkTheme: ThemeData(
+            brightness: Brightness.dark
+          ),
           home: Splash(),
         );
       },

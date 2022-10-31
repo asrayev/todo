@@ -32,7 +32,10 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
               onSaved: (val) {
                 newTitle = val ?? "";
               },
+              textInputAction: TextInputAction.next,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
+
                 hintText: 'Title',
                 hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
                 filled: true,
@@ -47,6 +50,7 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
               onSaved: (val) {
                 newDescription = val ?? "";
               },
+              textInputAction: TextInputAction.done,
               maxLines: 8,
               decoration: InputDecoration(
                 hintText: 'Description',
@@ -87,26 +91,29 @@ class _AddTaskWidgetState extends State<AddTaskWidget> {
                 SizedBox(
                   width: 250,
                 ),
-                SvgPicture.asset(Myicons.send),
+                InkWell(
+                    onTap: ((){
+                      formKey.currentState?.save();
+                      var newTodo = TodoModel(
+                        title: newTitle,
+                        description: newDescription,
+                        date: Data,
+                        priority: "priority",
+                        isCompleted: 0,
+                      );
+                      LocalDatabase.insertToDatabase(newTodo);
+
+                      widget.onNewTask();
+
+                      Navigator.pop(context);
+
+                    }),
+
+
+                    child: SvgPicture.asset(Myicons.send)),
               ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  formKey.currentState?.save();
-                  var newTodo = TodoModel(
-                    title: newTitle,
-                    description: newDescription,
-                    date: Data,
-                    priority: "priority",
-                    isCompleted: 0,
-                  );
-                  LocalDatabase.insertToDatabase(newTodo);
 
-                  widget.onNewTask();
-
-                  Navigator.pop(context);
-                },
-                child: Text("Add"))
           ],
         ),
       ),
